@@ -1,0 +1,18 @@
+.transactionTable {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.transactionTableHead {
+    background-color: #1b1b1b;
+    color: white;
+}
+
+.transactionTableRow {
+    border: 1px solid #1b1b1b;
+}
+
+.transactionTableColumn:nth-child(even) {
+    background-color: rgba(27, 27, 27, 0.3);
+}
