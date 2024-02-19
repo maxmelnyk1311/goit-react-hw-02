@@ -1,4 +1,5 @@
-export default function Feedback({feedbacks, totalFeedbacks, positiveFeedbacks}) {
+export default function Feedback({feedbacks, totalFeedbacks}) {
+    const positiveFeedbacks = Math.round(((feedbacks.good + feedbacks.neutral) / totalFeedbacks) * 100);
     return (
         <ul>
             <li>

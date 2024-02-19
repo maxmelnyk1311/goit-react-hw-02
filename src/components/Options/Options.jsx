@@ -5,11 +5,17 @@ export default function Options({feedbacks, onUpdate, onReset, totalFeedbacks}) 
     const keys = Object.keys(feedbacks);
     return (
         <ul className={css.optionsList}>
-            <ClickCounterBtn clickHandler={() => onUpdate(keys[0])}>Good</ClickCounterBtn>
-            <ClickCounterBtn clickHandler={() => onUpdate(keys[1])}>Neutral</ClickCounterBtn>
-            <ClickCounterBtn clickHandler={() => onUpdate(keys[2])}>Bad</ClickCounterBtn>
+            {keys.map((key) => {
+                return (
+                    <ClickCounterBtn 
+                        key={key}
+                        className={css.optionButton}  
+                        clickHandler={() => onUpdate(key)}>
+                            {key}
+                    </ClickCounterBtn>)
+            })}
             {totalFeedbacks > 0 && 
-                <ClickCounterBtn clickHandler={onReset}>Reset</ClickCounterBtn>
+                <ClickCounterBtn clickHandler={onReset}>reset</ClickCounterBtn>
             }
         </ul>
     )

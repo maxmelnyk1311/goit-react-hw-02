@@ -1,10 +1,8 @@
-export default function Description() {
+export default function Description({headerText, descriptionText}) {
     return (
-        <div >
-            <h1>Sip Happens Café</h1>
-            <p>
-                Please leave your feedback about our service by selecting one of the options below.
-            </p>
-        </div>
+        <>
+            <h1>{headerText}</h1>
+            <p>{descriptionText}</p>
+        </>
     )
 }

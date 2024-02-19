@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 import Description from '../Description/Description.jsx';
 import Options from '../Options/Options.jsx';
 import Feedback from '../Feedback/Feedback.jsx';
+import Notification from '../Feedback/Notification.jsx';
+
+const descriptionHeaderText = "Sip Happens Café";
+const descriptionText = "Please leave your feedback about our service by selecting one of the options below.";
+const noFeedbackText = "No feedback yet";
 const KEY = "saved-feedbacks";
 
 export default function App() {
@@ -66,7 +71,6 @@ export default function App() {
   }
 
   const totalFeedbacks = feedbacks.good + feedbacks.neutral + feedbacks.bad;
-  const positiveFeedbacks = Math.round(((feedbacks.good + feedbacks.neutral) / totalFeedbacks) * 100);
 
   useEffect(() => {
     window.localStorage.setItem(KEY, JSON.stringify(feedbacks));
@@ -74,7 +78,10 @@ export default function App() {
 
   return (
     <>
-      <Description />
+      <Description 
+        headerText={descriptionHeaderText}
+        descriptionText={descriptionText}
+      />
       <Options 
         feedbacks={feedbacks} 
         onUpdate={updateFeedback} 
@@ -86,9 +93,11 @@ export default function App() {
         <Feedback 
           feedbacks={feedbacks} 
           totalFeedbacks={totalFeedbacks} 
-          positiveFeedbacks={positiveFeedbacks}/>
+        />
         :
-        <p>No feedback yet</p>
+        <Notification 
+          notificationText={noFeedbackText}
+        />
       }
     </>
   )
